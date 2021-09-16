@@ -1,0 +1,234 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500&display=swap');
+
+:root {
+  --blue: #3399ff;
+  --blue-dark: #0080ff;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  outline: none;
+}
+
+html {
+  font-family: 'Poppins', sans-serif;
+  font-size: 100%;
+}
+
+a {
+  text-decoration: none;
+  color: var(--blue);
+}
+
+ul,
+li {
+  list-style: none;
+}
+
+img {
+  max-width: 100%;
+}
+
+.container {
+  max-width: 1170px !important;
+}
+
+.btn-primary {
+  padding: 0.5rem 1.25rem;
+  font-size: 1rem;
+  line-height: 1.25rem;
+  font-weight: 500;
+  background: var(--blue);
+  color: #fff;
+  border-color: var(--blue);
+  border-radius: 4px;
+}
+
+.btn-secondary {
+  padding: 0.5rem 1.25rem;
+  font-size: 1rem;
+  line-height: 1.25rem;
+  font-weight: 500;
+  border-radius: 4px;
+}
+
+.btn-primary:hover {
+  background: var(--blue-dark);
+  border-color: var(--blue-dark);
+}
+
+/* HEADER */
+header.header {
+  background: var(--blue);
+  padding: 1rem 0;
+}
+
+div.alert-success {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  margin-bottom: 0px;
+}
+
+.header > .container {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.header .logo {
+  font-size: 2rem;
+  line-height: 2rem;
+  font-weight: 500;
+  color: #fff;
+}
+.header .navmenu ul {
+  display: flex;
+  align-items: center;
+  margin-bottom: 0;
+}
+
+.header .navmenu a {
+  color: #fff;
+  padding: 0.5rem 1rem;
+  margin: 0 1rem;
+}
+
+.header .btn-header {
+  padding: 0.5rem 1.25rem;
+  font-size: 1rem;
+  line-height: 1.25rem;
+  font-weight: 500;
+  background: #fff;
+  color: var(--blue-dark);
+  border-radius: 4px;
+  transition: all 0.3s ease;
+}
+
+.header .btn-header:hover {
+  color: #fff;
+  background: var(--blue-dark);
+}
+
+/* LOGIN PAGE */
+main.login {
+  height: 100vh;
+}
+
+main.login > .container {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+main.login form {
+  max-width: 400px;
+}
+
+main.login form h3 {
+  text-align: center;
+  color: var(--blue);
+}
+
+main.login form button {
+  display: block;
+  margin: 0 auto;
+}
+
+/* PAINEL */
+
+main.panel {
+  height: calc(100vh - 72px);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+main.panel > .container {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  column-gap: 40px;
+}
+
+.panel .tasks-column {
+  height: 80vh;
+  padding: 20px 10px;
+  background: #fafafa;
+  border-radius: 20px;
+  transition: 400ms;
+}
+
+.tasks-column h2 {
+  padding-left: 20px;
+  padding-bottom: 10px;
+  color: var(--blue);
+  font-size: 1.5rem;
+  line-height: 1.75rem;
+  font-weight: 500;
+}
+
+.tasks-column .tasks {
+  display: flex;
+  flex-direction: column;
+  transition: 400ms;
+}
+
+.isDragging {
+  cursor: move !important;
+  opacity: 0.3;
+}
+
+.draggingOver {
+  background: #d2e9ff !important;
+}
+
+.column-highlight {
+  background: #f3f9ff;
+}
+
+.task {
+  margin-bottom: 1rem;
+  background: #fff;
+  border-radius: 10px;
+  padding: 20px;
+  box-shadow: 0 2px 2px -1px var(--blue-dark);
+}
+
+.task .task-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 1rem;
+}
+
+.task .task-header .trash-button {
+  border: none;
+  padding: 0.5rem 0.5rem;
+  border-radius: 4px;
+  font-size: 0.875rem;
+  line-height: 0.875rem;
+  background: transparent;
+  transform: all 0.3s ease;
+}
+
+.task .task-header .trash-button:hover {
+  color: #fff;
+  background: #d12c0f;
+}
+
+.task h3 {
+  font-size: 1rem;
+  line-height: 1.25rem;
+  font-weight: 500;
+  color: #222;
+}
+
+.task p {
+  font-size: 0.875rem;
+  line-height: 1rem;
+  color: #898989;
+}

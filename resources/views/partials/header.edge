@@ -1,0 +1,89 @@
+<header class="header">
+  <div class="container">
+    <h1 class="logo">
+      Tasks Manager
+    </h1>
+
+    <nav class="navmenu">
+      <ul>
+        <li>
+          <a href="/">Tarefas</a>
+        </li>
+
+        <li>
+          <a href="/clientes">Clientes</a>
+        </li>
+        <li>
+          <a href="#">Projetos</a>
+        </li>
+      </ul>
+    </nav>
+
+    <div class="d-flex align-items-center">
+      <a href="#" class="btn-header" data-bs-toggle="modal" data-bs-target="#newTaskModal">Nova Tarefa</a>
+      <a href="#" style="margin-left: 1rem" class="btn-header" data-bs-toggle="modal" data-bs-target="#newClientModal">Novo Cliente</a>
+    </div>
+    
+
+    {{--  Modal Nova Tarefa  --}}
+    <div class="modal fade" id="newTaskModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="exampleModalLabel">Adicione uma nova tarefa</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+          </div>
+          <div class="modal-body">
+            <form action="/tasks" method="post">
+              {{ csrfField() }}
+              <input type="text" class="form-control mb-3" placeholder="Título da Tarefa" name="task_title">
+              <textarea class="form-control mb-3" placeholder="Descrição da Tarefa" rows="5" name="task_description"></textarea>
+              <select class="form-select" aria-label="Selecione um Cliente" name="task_client" id="task_client">
+                <option selected>Selecione o cliente</option>
+                <option value="1">Sem cliente específico</option>
+              </select>
+            
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Fechar</button>
+            <button type="submit" class="btn btn-primary">Adicionar Tarefa</button>
+          </div>
+          </form>
+        </div>
+      </div>
+    </div>
+
+
+    {{--  Modal Novo Cliente  --}}
+    <div class="modal fade" id="newClientModal" tabindex="-1" aria-hidden="true">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="exampleModalLabel">Adicione um novo cliente</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+          </div>
+          <div class="modal-body">
+            <form action="/new-client" method="post">
+              {{ csrfField() }}
+              <input type="text" class="form-control mb-3" placeholder="Nome do Cliente" name="client_name">
+
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Fechar</button>
+            <button type="submit" class="btn btn-primary">Adicionar Cliente</button>
+          </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</header>
+
+@if(flashMessages.has('notification'))
+<div class="alert alert-success alert-dismissible fade show" role="alert">
+  <div class="container">
+    {{flashMessages.get('notification')}}
+  <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+  </div>
+</div>
+@endif
