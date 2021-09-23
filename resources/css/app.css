@@ -205,7 +205,23 @@ main.panel > .container {
   margin-bottom: 1rem;
 }
 
+.task .task-header .task-buttons {
+  display: flex;
+  align-items: center;
+  column-gap: 0.5rem;
+}
+
 .task .task-header .trash-button {
+  border: none;
+  padding: 0.5rem 0.5rem;
+  border-radius: 4px;
+  font-size: 0.875rem;
+  line-height: 0.875rem;
+  background: transparent;
+  transform: all 0.3s ease;
+}
+
+.task .task-header .edit-button {
   border: none;
   padding: 0.5rem 0.5rem;
   border-radius: 4px;
@@ -220,6 +236,11 @@ main.panel > .container {
   background: #d12c0f;
 }
 
+.task .task-header .edit-button:hover {
+  color: #fff;
+  background: var(--blue);
+}
+
 .task h3 {
   font-size: 1rem;
   line-height: 1.25rem;
@@ -231,4 +252,14 @@ main.panel > .container {
   font-size: 0.875rem;
   line-height: 1rem;
   color: #898989;
+}
+
+.task .task-footer {
+  margin-top: 1rem;
+}
+
+.task-footer span {
+  font-size: 0.875rem;
+  line-height: 0.875rem;
+  color: var(--blue);
 }

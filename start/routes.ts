@@ -24,7 +24,9 @@ Route.group(() => {
   Route.get('/', 'TasksController.index')
   Route.post('/tasks', 'TasksController.store')
   Route.delete('/tasks/:id', 'TasksController.destroy')
+  Route.put('/tasks/:id', 'TasksController.update')
   Route.get('/clientes', 'ClientsController.index')
+  Route.post('/new-client', 'ClientsController.store')
 }).middleware('auth')
 
 Route.get('/login', 'AuthController.showLogin').middleware('guest')

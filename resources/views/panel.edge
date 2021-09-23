@@ -1,5 +1,5 @@
 @layout('layouts/main')
-@set('title', 'Painel Administrativo')
+@set('title', 'Painel | Tasks Manager')
 
 @section('content')
 <main class="panel">
@@ -12,7 +12,13 @@
           <div class="task" draggable="true">
             <div class="task-header">
               <h3 class="task-title mb-0">{{task.task_title}}</h3>
-              <form action="{{ `/tasks/${task.id}?_method=DELETE` }}" method="POST">
+              <div class="task-buttons">
+                  <button type="button" class="edit-button" data-bs-toggle="modal" data-bs-target="#editTaskModal">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-pen" viewBox="0 0 16 16">
+                    <path d="m13.498.795.149-.149a1.207 1.207 0 1 1 1.707 1.708l-.149.148a1.5 1.5 0 0 1-.059 2.059L4.854 14.854a.5.5 0 0 1-.233.131l-4 1a.5.5 0 0 1-.606-.606l1-4a.5.5 0 0 1 .131-.232l9.642-9.642a.5.5 0 0 0-.642.056L6.854 4.854a.5.5 0 1 1-.708-.708L9.44.854A1.5 1.5 0 0 1 11.5.796a1.5 1.5 0 0 1 1.998-.001zm-.644.766a.5.5 0 0 0-.707 0L1.95 11.756l-.764 3.057 3.057-.764L14.44 3.854a.5.5 0 0 0 0-.708l-1.585-1.585z"/>
+                  </svg>
+                </button>
+                <form action="{{ `/tasks/${task.id}?_method=DELETE` }}" method="POST">
                 {{ csrfField() }}
                 <button type="submit" class="trash-button">
                   <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-trash" viewBox="0 0 16 16">
@@ -21,8 +27,12 @@
                  </svg>
                 </button>
               </form>
+              </div>
             </div>
             <p>{{task.task_description}}</p>
+            <div class="task-footer">
+              <span class="task_client">{{task.task_client}}</span>
+            </div>
           </div>
         @endeach
       </div>
@@ -34,5 +44,40 @@
       <h2>Concluídas</h2>
     </div>
   </div>
-</main>  
+</main>
+
+<!-- Modal -->
+<div class="modal fade" id="editTaskModal" tabindex="-1" aria-labelledby="editTaskModal" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      @each(task in tasks)
+        <form action="{{`/tasks/${task.id}?_method=PUT`}}" method="POST">
+        {{ csrfField() }}
+      <div class="modal-header">
+        <h5 class="modal-title" id="editTaskModal">Editar Tarefa</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        
+          <input type="text" class="form-control mb-3" name="task_title" placeholder="Insira o novo título da tarefa">
+          <input type="text" class="form-control mb-3" name="task_description" placeholder="Insira sua nova descrição">
+          <select class="form-select" aria-label="Selecione um Cliente" name="task_client" id="task_client">
+                <option selected>Selecione o cliente</option>
+                <option value="1">Sem cliente específico</option>
+                @each(client in clients)
+                  <option value="{{client.client_name}}">{{client.client_name}}</option>
+                @endeach
+          </select>
+              
+              
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Fechar</button>
+        <button type="submit" class="btn btn-primary">Salvar Alterações</button>
+      </div>
+      </form>
+      @endeach
+    </div>
+  </div>
+</div>
 @endsection

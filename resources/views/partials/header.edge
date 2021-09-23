@@ -4,7 +4,7 @@
       Tasks Manager
     </h1>
 
-    <nav class="navmenu">
+    {{--  <nav class="navmenu">
       <ul>
         <li>
           <a href="/">Tarefas</a>
@@ -17,7 +17,7 @@
           <a href="#">Projetos</a>
         </li>
       </ul>
-    </nav>
+    </nav>  --}}
 
     <div class="d-flex align-items-center">
       <a href="#" class="btn-header" data-bs-toggle="modal" data-bs-target="#newTaskModal">Nova Tarefa</a>
@@ -40,7 +40,10 @@
               <textarea class="form-control mb-3" placeholder="Descrição da Tarefa" rows="5" name="task_description"></textarea>
               <select class="form-select" aria-label="Selecione um Cliente" name="task_client" id="task_client">
                 <option selected>Selecione o cliente</option>
-                <option value="1">Sem cliente específico</option>
+                <option value="Sem cliente específico ">Sem cliente específico</option>
+                @each(client in clients)
+                  <option value="{{client.client_name}}">{{client.client_name}}</option>
+                @endeach
               </select>
             
           </div>
@@ -66,6 +69,9 @@
             <form action="/new-client" method="post">
               {{ csrfField() }}
               <input type="text" class="form-control mb-3" placeholder="Nome do Cliente" name="client_name">
+              <input type="email" class="form-control mb-3" placeholder="E-mail" name="client_email">
+              <input type="tel" class="form-control mb-3" placeholder="Telefone" name="client_phone">
+              <textarea id="client_adress" name="client_adress" class="form-control" placeholder="Endereço"></textarea>
 
           </div>
           <div class="modal-footer">
