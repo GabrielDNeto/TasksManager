@@ -62,8 +62,7 @@
           <input type="text" class="form-control mb-3" name="task_title" placeholder="Insira o novo título da tarefa">
           <input type="text" class="form-control mb-3" name="task_description" placeholder="Insira sua nova descrição">
           <select class="form-select" aria-label="Selecione um Cliente" name="task_client" id="task_client">
-                <option selected>Selecione o cliente</option>
-                <option value="1">Sem cliente específico</option>
+                <option selected value="{{task.task_client}}">Cliente atual: {{task.task_client}}</option>
                 @each(client in clients)
                   <option value="{{client.client_name}}">{{client.client_name}}</option>
                 @endeach
