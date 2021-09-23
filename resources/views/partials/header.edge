@@ -39,8 +39,7 @@
               <input type="text" class="form-control mb-3" placeholder="Título da Tarefa" name="task_title">
               <textarea class="form-control mb-3" placeholder="Descrição da Tarefa" rows="5" name="task_description"></textarea>
               <select class="form-select" aria-label="Selecione um Cliente" name="task_client" id="task_client">
-                <option selected>Selecione o cliente</option>
-                <option value="Sem cliente específico ">Sem cliente específico</option>
+                <option value="Cliente não específico">Cliente não específico</option>
                 @each(client in clients)
                   <option value="{{client.client_name}}">{{client.client_name}}</option>
                 @endeach
